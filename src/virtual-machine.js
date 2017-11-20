@@ -80,6 +80,7 @@ class VirtualMachine extends EventEmitter {
      * Start running the VM - do this before anything else.
      */
     start () {
+        console.log('start !!');
         this.runtime.start();
     }
 

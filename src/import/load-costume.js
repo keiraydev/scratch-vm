@@ -13,8 +13,13 @@ const log = require('../util/log');
  * @param {!Runtime} runtime - Scratch runtime, used to access the storage module.
  * @returns {?Promise} - a promise which will resolve after skinId is set, or null on error.
  */
-const loadCostumeFromAsset = function (costume, costumeAsset, runtime) {
+const loadCostumeFromAsset = function (costume, costumeAsset, runtime) {    
+    console.log('loadCostumeFromAsset.');
+    console.log(costume);
+    console.log(costumeAsset);
+
     costume.assetId = costumeAsset.assetId;
+    
     if (!runtime.renderer) {
         log.error('No rendering module present; cannot load costume: ', costume.name);
         return costume;

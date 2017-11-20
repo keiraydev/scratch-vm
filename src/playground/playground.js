@@ -21,6 +21,7 @@ const getProjectUrl = function (asset) {
     if (assetIdParts[1]) {
         assetUrlParts.push(assetIdParts[1]);
     }
+    console.log(assetUrlParts.join(''));
     return assetUrlParts.join('');
 };
 
@@ -37,10 +38,14 @@ const getAssetUrl = function (asset) {
         asset.dataFormat,
         '/get/'
     ];
+    console.log(assetUrlParts.join(''));
     return assetUrlParts.join('');
+    
 };
 
 window.onload = function () {
+    console.log('start');
+
     // Lots of global variables to make debugging easier
     // Instantiate the VM.
     const vm = new window.VirtualMachine();

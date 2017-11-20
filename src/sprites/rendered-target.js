@@ -366,13 +366,16 @@ class RenderedTarget extends Target {
      * @param {number} index New index of costume.
      */
     setCostume (index) {
+        console.log('called setCostume');
         // Keep the costume index within possible values.
         index = Math.round(index);
         this.currentCostume = MathUtil.wrapClamp(
             index, 0, this.sprite.costumes.length - 1
         );
         if (this.renderer) {
+            
             const costume = this.sprite.costumes[this.currentCostume];
+            console.log(costume);
             const drawableProperties = {
                 skinId: costume.skinId,
                 costumeResolution: costume.bitmapResolution
@@ -400,6 +403,7 @@ class RenderedTarget extends Target {
      * @param {!object} costumeObject Object representing the costume.
      */
     addCostume (costumeObject) {
+        console.log('********* addCostume');
         const usedNames = this.sprite.costumes.map(costume => costume.name);
         costumeObject.name = StringUtil.unusedName(costumeObject.name, usedNames);
         this.sprite.costumes.push(costumeObject);

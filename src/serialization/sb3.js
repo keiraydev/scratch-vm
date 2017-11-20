@@ -86,6 +86,7 @@ const parseScratchObject = function (object, runtime, extensions) {
         // console.log(blocks);
     }
     // Costumes from JSON.
+    console.log('Costumes from JSON.');
     const costumePromises = (object.costumes || []).map(costumeSource => {
         // @todo: Make sure all the relevant metadata is being pulled out.
         const costume = {

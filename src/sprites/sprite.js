@@ -53,13 +53,17 @@ class Sprite {
      * @returns {!RenderedTarget} Newly created clone.
      */
     createClone () {
+        console.log('======== createClone ==========');
         const newClone = new RenderedTarget(this, this.runtime);
+        console.log(newClone);
+
         newClone.isOriginal = this.clones.length === 0;
         this.clones.push(newClone);
         if (newClone.isOriginal) {
             newClone.initDrawable();
             this.runtime.fireTargetWasCreated(newClone);
         } else {
+            console.log('fireTargetWasCreated');
             this.runtime.fireTargetWasCreated(newClone, this.clones[0]);
         }
         return newClone;
@@ -79,6 +83,7 @@ class Sprite {
     }
 
     duplicate () {
+        console.log('======== duplicate ==========');
         const newSprite = new Sprite(null, this.runtime);
 
         newSprite.blocks = this.blocks.duplicate();
@@ -89,6 +94,8 @@ class Sprite {
         const assetPromises = [];
 
         newSprite.costumes = this.costumes.map(costume => {
+            
+            console.log('costume id : ' + costume.assetId);
             const newCostume = Object.assign({}, costume);
             const costumeAsset = this.runtime.storage.get(costume.assetId);
             assetPromises.push(loadCostumeFromAsset(newCostume, costumeAsset, this.runtime));

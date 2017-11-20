@@ -191,6 +191,7 @@ const parseScratchObject = function (object, runtime, extensions, topLevel) {
         sprite.name = object.objName;
     }
     // Costumes from JSON.
+    console.log('cb2 parseScratchObject -> Costumes from JSON.');
     const costumePromises = [];
     if (object.hasOwnProperty('costumes')) {
         for (let i = 0; i < object.costumes.length; i++) {
@@ -202,6 +203,8 @@ const parseScratchObject = function (object, runtime, extensions, topLevel) {
                 rotationCenterY: costumeSource.rotationCenterY,
                 skinId: null
             };
+
+            console.log(costume);
             costumePromises.push(loadCostume(costumeSource.baseLayerMD5, costume, runtime));
         }
     }
